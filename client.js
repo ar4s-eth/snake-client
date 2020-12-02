@@ -16,16 +16,21 @@ const connect = function() {
     console.log(`Server says: `, data);
   })
 
-  //connect event triggers a message to the client
+  //connect event triggers
   conn.on('connect', () => {
+    //writes my name to the server 
     conn.write('Name: ASH');
-    console.log(`Ash has connected `)
+    //client side message confirming the connection
+    console.log(`Ash has connected `);
+    //send a move up signal to the server
 
-  //send client name to server
-  // conn.on('name', (name) => {
-  //   console.log(`Name: ASH`, name);
-  // })
-
+    // reference code to test if we can send multiple moves via conn.write() 
+    // conn.write(`Move: up`);
+    // setInterval(() => {
+    //   conn.write(`Move: up`)
+    // }, 1000);
+    // ^^ Works!
+   
   });
   
   return conn;
