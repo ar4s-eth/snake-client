@@ -11,10 +11,22 @@ const connect = function() {
   //intepret incoming data as text
   conn.setEncoding('utf8');
 
-  //add event handler 
+  //add event handler for a successful connection
   conn.on('data', (data) => {
     console.log(`Server says: `, data);
   })
+
+  //connect event triggers a message to the client
+  conn.on('connect', () => {
+    conn.write('Name: ASH');
+    console.log(`Ash has connected `)
+
+  //send client name to server
+  // conn.on('name', (name) => {
+  //   console.log(`Name: ASH`, name);
+  // })
+
+  });
   
   return conn;
 }
